@@ -1,7 +1,7 @@
 ## Employee Tracker CMS
 
 ## Type of Application
-
+Test
 ## How to Use Application
 
 ## Bugs
