@@ -12,7 +12,7 @@ const promptMessages = {
     addEmployee: "Add An Employee",
     removeEmployee: "Remove An Employee",
     updateRole: "Update Employee Role",
-    updateEmployeeManager: "Update Employee Manager",
+    updateEmployeeManager: "Update Employee's Manager",
     viewAllRoles: "View All Roles",
     exit: "Exit"
 };
@@ -21,14 +21,14 @@ const connection = mysql.createConnection({
     host: 'localhost',
 
     // Your port
-    port: 3000,
+    port: 3306,
 
     // username
     user: 'root',
 
     // password
-    password: 'password',
-    database: 'employees'
+    password: 'Bigfudge7!',
+    database: 'employees_db'
 });
 
 connection.connect(err => {
@@ -170,7 +170,7 @@ async function addEmployee() {
                 name: 'role',
                 type: 'list',
                 choices: () => res.map(res => res.title),
-                message: 'What is the employee role?: '
+                message: 'What is the employees role?: '
             }
         ]);
         let roleId;
@@ -189,7 +189,7 @@ async function addEmployee() {
                     name: 'manager',
                     type: 'list',
                     choices: choices,
-                    message: 'Choose the employee Manager: '
+                    message: 'Choose the employees Manager: '
                 }
             ]);
             let managerId;
@@ -208,7 +208,7 @@ async function addEmployee() {
                     }
                 }
             }
-            console.log('Employee has been added. Please view all employee to verify...');
+            console.log('Employee has been added. Please view all employees to verify...');
             connection.query(
                 'INSERT INTO employee SET ?',
                 {
@@ -228,17 +228,17 @@ async function addEmployee() {
 
 }
 function remove(input) {
-    const promptQ = {
+    const promptQuestion = {
         yes: "yes",
-        no: "no I don't (view all employees on the main option)"
+        no: "no I don't"
     };
     inquirer.prompt([
         {
             name: "action",
             type: "list",
-            message: "In order to proceed an employee, an ID must be entered. View all employees to get" +
+            message: "In order to proceed, an ID must be entered. View all employees to get" +
                 " the employee ID. Do you know the employee ID?",
-            choices: [promptQ.yes, promptQ.no]
+            choices: [promptQuestion.yes, promptQuestionno]
         }
     ]).then(answer => {
         if (input === 'delete' && answer.action === "yes") removeEmployee();
@@ -256,7 +256,7 @@ async function removeEmployee() {
         {
             name: "first",
             type: "input",
-            message: "Enter the employee ID you want to remove:  "
+            message: "Enter the ID of the employee you want to remove:  "
         }
     ]);
 
@@ -268,7 +268,7 @@ async function removeEmployee() {
             if (err) throw err;
         }
     )
-    console.log('Employee has been removed on the system!');
+    console.log('Employee has been removed from the system!');
     prompt();
 
 };
@@ -294,7 +294,7 @@ async function updateRole() {
                 name: 'role',
                 type: 'list',
                 choices: () => res.map(res => res.title),
-                message: 'What is the new employee role?: '
+                message: 'What is the new employees role?: '
             }
         ]);
         let roleId;
@@ -328,3 +328,5 @@ function askName() {
         }
     ]);
 }
+
+module.exports = connection;
