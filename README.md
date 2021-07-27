@@ -1,14 +1,19 @@
 ## Employee Tracker CMS
 
 ## Type of Application
-Test
+This is a node.js application that is structured to mimic a Content Management System at a company.
+
 ## How to Use Application
-TEST
+Run the node index.js and answer the questions that follow.  These have a multiple choice options to choose from. 
+
 ## Bugs
+I didn't find any bugs as part of the requirements, however, the bonus portions were difficult to complete.
 
 ## Contributions
 
 ## Screen Shots
+![073EDA39-EF57-44F7-AC52-57A3D83FE61B](https://user-images.githubusercontent.com/79759725/127081115-c58810d0-93b8-4bab-8705-7acf7644cc42.png)
+
 
 ## License
 The MIT License (MIT)
